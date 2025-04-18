@@ -6,15 +6,18 @@ import com.vti.blog_app01.form.PostFilterForm;
 import com.vti.blog_app01.form.PostUpdateForm;
 import com.vti.blog_app01.mapper.PostMapper;
 import com.vti.blog_app01.service.PostService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Validated
 @RestController
 public class PostController {
     @Autowired
@@ -43,7 +46,7 @@ public class PostController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/api/v1/posts")
-    public PostDto create(@RequestBody PostCreateForm form){
+    public PostDto create(@Valid  @RequestBody PostCreateForm form){
         return postService.create(form);
     }
 
