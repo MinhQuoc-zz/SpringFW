@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Target(ElementType.PARAMETER)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface PostIdExists {
-    String message() default "{Bài viết không tồn tại theo id}";
+    String message() default "{post.id.Exists.message}";
 
     Class<?>[] groups() default {};
 

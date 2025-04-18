@@ -9,8 +9,8 @@ import org.hibernate.validator.constraints.Length;
 @Getter
 @Setter
 public class PostUpdateForm {
-    @NotBlank(message = "Tiêu đề bài viết ko được để trống")
-    @Length(max = 50,message = "Tối đa 50 ký tự")
+    @NotBlank(message = "post.title.Exists.message")
+    @Length(max = 50,message = "post.title.Length.message")
     private String title;
 
     @NotBlank(message = "Mô tả bài viết ko được để trống")
