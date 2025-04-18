@@ -4,6 +4,7 @@ import com.vti.blog_app01.entity.Comment;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
@@ -25,5 +26,6 @@ public class CommentCreateForm {
     private String body;
 
     @NotNull(message = "Status ko được để trống")
+    @Pattern(regexp = "REVIEW|OPEN|CLOSED",message = "Status phải là REVIEW, CLOSED và OPEN")
     private Comment.Status status;
 }
