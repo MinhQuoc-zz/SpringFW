@@ -2,6 +2,7 @@ package com.vti.blog_app01.controller;
 
 import com.vti.blog_app01.dto.CommentDto;
 import com.vti.blog_app01.form.CommentCreateForm;
+import com.vti.blog_app01.form.CommentFilterForm;
 import com.vti.blog_app01.form.CommentUpdateForm;
 import com.vti.blog_app01.mapper.CommentMapper;
 import com.vti.blog_app01.service.CommentSercice;
@@ -16,8 +17,8 @@ public class CommentController {
     private CommentSercice commentSercice;
 
     @GetMapping("/api/v1/comments")
-    public Page<CommentDto> findAll(Pageable pageable){
-        return commentSercice.findAll(pageable);
+    public Page<CommentDto> findAll(CommentFilterForm form,Pageable pageable){
+        return commentSercice.findAll(form,pageable);
     }
 
     @GetMapping("/api/v1/posts/{postId}/comments")

@@ -2,10 +2,12 @@ package com.vti.blog_app01.service;
 
 import com.vti.blog_app01.dto.CommentDto;
 import com.vti.blog_app01.form.CommentCreateForm;
+import com.vti.blog_app01.form.CommentFilterForm;
 import com.vti.blog_app01.form.CommentUpdateForm;
 import com.vti.blog_app01.mapper.CommentMapper;
 import com.vti.blog_app01.repository.CommentRepository;
 import com.vti.blog_app01.repository.PostRepository;
+import com.vti.blog_app01.specification.CommentSpecification;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,8 +21,9 @@ public class CommentServiceImp implements CommentSercice{
     private PostRepository postRepository;
 
     @Override
-    public Page<CommentDto> findAll(Pageable pageable) {
-        return commentRepository.findAll(pageable).map(CommentMapper::map);
+    public Page<CommentDto> findAll(CommentFilterForm form,Pageable pageable) {
+        var spec = CommentSpecification.buildSpec(form);
+        return commentRepository.findAll(spec,pageable).map(CommentMapper::map);
     }
 
     @Override
