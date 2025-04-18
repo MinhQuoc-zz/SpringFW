@@ -30,7 +30,7 @@ public class CommentController {
     }
 
     @GetMapping("/api/v1/comments/{id}")
-    private CommentDto finfById(@PathVariable("id") String id){
+    public CommentDto findById(@PathVariable("id") String id){
         return commentSercice.findById(id);
     }
 

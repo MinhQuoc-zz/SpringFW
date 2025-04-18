@@ -24,7 +24,7 @@ public class CommentMapper {
         dto.setStatus(comment.getStatus());
         dto.setCraetedAt(comment.getCraetedAt());
         dto.setUpdateAt(comment.getUpdateAt());
-        return dto;
+        return dto.withSelfRel();
     }
 
     public static void map(CommentUpdateForm form, Comment comment) {
