@@ -6,12 +6,15 @@ import com.vti.blog_app01.form.CommentFilterForm;
 import com.vti.blog_app01.form.CommentUpdateForm;
 import com.vti.blog_app01.mapper.CommentMapper;
 import com.vti.blog_app01.service.CommentSercice;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@Validated
 public class CommentController {
     @Autowired
     private CommentSercice commentSercice;
@@ -32,7 +35,7 @@ public class CommentController {
     }
 
     @PutMapping("/api/v1/comments/{id}")
-    public CommentDto update(@RequestBody CommentUpdateForm form, @PathVariable("id") String id){
+    public CommentDto update(@Valid  @RequestBody CommentUpdateForm form, @PathVariable("id") String id){
         return commentSercice.update(form,id);
     }
 
@@ -42,7 +45,7 @@ public class CommentController {
     }
 
     @PostMapping("/api/v1/posts/{postId}/comments")
-    public CommentDto create(@RequestBody CommentCreateForm form,@PathVariable("postId") Long postId){
+    public CommentDto create(@Valid @RequestBody CommentCreateForm form,@PathVariable("postId") Long postId){
         return commentSercice.create(form,postId);
     }
 }
