@@ -3,9 +3,11 @@ package com.vti.blog_app01.service;
 import com.vti.blog_app01.dto.PostDto;
 import com.vti.blog_app01.entity.Post;
 import com.vti.blog_app01.form.PostCreateForm;
+import com.vti.blog_app01.form.PostFilterForm;
 import com.vti.blog_app01.form.PostUpdateForm;
 import com.vti.blog_app01.mapper.PostMapper;
 import com.vti.blog_app01.repository.PostRepository;
+import com.vti.blog_app01.specification.PostSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -34,8 +36,9 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
-    public Page<PostDto> findAllByPage(Pageable pageable) {
-        return postRepository.findAll(pageable).map(PostMapper::map);
+    public Page<PostDto> findAllByPage(PostFilterForm form,Pageable pageable) {
+        var spec = PostSpecification.buildSpec(form);
+        return postRepository.findAll(spec,pageable).map(PostMapper::map);
         // lamda
         // method reference
     }

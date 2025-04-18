@@ -2,6 +2,7 @@ package com.vti.blog_app01.controller;
 
 import com.vti.blog_app01.dto.PostDto;
 import com.vti.blog_app01.form.PostCreateForm;
+import com.vti.blog_app01.form.PostFilterForm;
 import com.vti.blog_app01.form.PostUpdateForm;
 import com.vti.blog_app01.mapper.PostMapper;
 import com.vti.blog_app01.service.PostService;
@@ -25,8 +26,8 @@ public class PostController {
 //    }
 
     @GetMapping("/api/v1/posts")
-    public Page<PostDto> findAllByPage(Pageable pageable){
-        return postService.findAllByPage(pageable);
+    public Page<PostDto> findAllByPage(PostFilterForm form,Pageable pageable){
+        return postService.findAllByPage(form,pageable);
     }
 
     @GetMapping("/api/v1/posts/title/{title}/content/{content}")
