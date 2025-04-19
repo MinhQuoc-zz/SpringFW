@@ -1,5 +1,6 @@
 package com.vti.blog_app01.form;
 
+import com.vti.blog_app01.entity.Role;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,4 +11,5 @@ public class UserCreateForm {
     private String username;
     private String email;
     private String password;
+    private Role.Type role;
 }

@@ -8,7 +8,6 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -42,9 +41,9 @@ public class Comment {
 
     @Column(name = "created_at",updatable = false,nullable = false)
     @CreationTimestamp
-    private LocalDateTime craetedAt;
+    private LocalDateTime createdAt;
 
-    @Column(name = "update_at",nullable = false)
+    @Column(name = "updated_at",nullable = false)
     @UpdateTimestamp
     private LocalDateTime updateAt;
 

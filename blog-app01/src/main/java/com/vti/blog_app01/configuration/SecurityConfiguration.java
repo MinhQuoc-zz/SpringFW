@@ -20,6 +20,8 @@ public class SecurityConfiguration {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(customizer -> customizer
+                        .requestMatchers(HttpMethod.DELETE)
+                        .hasAnyAuthority("ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/users")
                         .permitAll()
                         .anyRequest()

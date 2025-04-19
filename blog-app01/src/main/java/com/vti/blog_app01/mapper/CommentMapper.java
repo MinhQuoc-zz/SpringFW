@@ -22,7 +22,7 @@ public class CommentMapper {
         dto.setEmail(comment.getEmail());
         dto.setBody(comment.getBody());
         dto.setStatus(comment.getStatus());
-        dto.setCraetedAt(comment.getCraetedAt());
+        dto.setCraetedAt(comment.getCreatedAt());
         dto.setUpdateAt(comment.getUpdateAt());
         return dto.withSelfRel();
     }
